@@ -25,11 +25,12 @@ export default function TextForm(props) {
     }
 
     const handleCopy = () => {
-      console.log("Iam copy");
-      var text = document.getElementById("myBox");
-      text.select();
-      navigator.clipboard.writeText(text.value);
-      document.getSelection().removeAllRanges();
+      // console.log("Iam copy");
+      // var text = document.getElementById("myBox");
+      // text.select();
+      // navigator.clipboard.writeText(text.value);
+      // document.getSelection().removeAllRanges();
+      navigator.clipboard.writeText(text);
       props.showAlert('Text copied', 'success');
     }
 
@@ -69,7 +70,7 @@ export default function TextForm(props) {
       </div>
       <div className="container" style = {{color: props.theme === 'dark' ? 'white' : '#050c24'}}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").filter((element) => {return element.length !== 0}).length} words and {text.length} characters in textarea</p>
+        <p>{text.split(/\s+/).filter((element) => {return element.length !== 0}).length} words and {text.length} characters in textarea</p>
         <p>{0.08 * text.split(" ").filter((element) => {return element.length !== 0}).length} minutes required to read information in textarea</p>
       </div>
       <div className="container" style = {{color: props.theme === 'dark' ? 'white' : '#050c24'}}>
